@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: orders
+      POSTGRES_USER: orders
+      POSTGRES_PASSWORD: orders
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U orders -d orders"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: orders
+      DB_PASSWORD: orders
+      DB_NAME: orders
+      DB_SSLMODE: disable
+      REST_ADDR: :8080
+      GRPC_ADDR: :50051
+      GRAPHQL_ADDR: :8081
+      MIGRATIONS_PATH: /app/internal/db/migrations
+    ports:
+      - "8080:8080"
+      - "50051:50051"
+      - "8081:8081"

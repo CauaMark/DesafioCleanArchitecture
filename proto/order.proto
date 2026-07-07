@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package orders;
+option go_package = "desafio-clean-architecture/internal/proto/orderspb";
+
+service OrderService {
+  rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse);
+}
+
+message ListOrdersRequest {}
+
+message Order {
+  int64 id = 1;
+  string customer_name = 2;
+  double total = 3;
+  string status = 4;
+}
+
+message ListOrdersResponse {
+  repeated Order orders = 1;
+}
