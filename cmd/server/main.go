@@ -10,25 +10,26 @@ import (
 	"path/filepath"
 	"time"
 
-	grpcserver "desafio-clean-architecture/internal/transport/grpc"
-	graphqltransport "desafio-clean-architecture/internal/transport/graphql"
-	resttransport "desafio-clean-architecture/internal/transport/rest"
-	postgresrepo "desafio-clean-architecture/internal/repository/postgres"
 	"desafio-clean-architecture/internal/infrastructure/db"
 	orderspb "desafio-clean-architecture/internal/proto/orderspb"
+	postgresrepo "desafio-clean-architecture/internal/repository/postgres"
+	graphqltransport "desafio-clean-architecture/internal/transport/graphql"
+	grpcserver "desafio-clean-architecture/internal/transport/grpc"
+	resttransport "desafio-clean-architecture/internal/transport/rest"
 	"desafio-clean-architecture/internal/usecase"
+
 	"google.golang.org/grpc"
 )
 
 type config struct {
-	DBHost     string
-	DBPort     string
-	DBUser     string
-	DBPassword string
-	DBName     string
-	DBSSLMode  string
-	RESTAddr   string
-	GRPCAddr   string
+	DBHost      string
+	DBPort      string
+	DBUser      string
+	DBPassword  string
+	DBName      string
+	DBSSLMode   string
+	RESTAddr    string
+	GRPCAddr    string
 	GraphQLAddr string
 }
 

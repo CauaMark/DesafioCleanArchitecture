@@ -4,8 +4,9 @@ import (
 	"desafio-clean-architecture/internal/usecase"
 	"encoding/json"
 	"fmt"
-	"github.com/graph-gophers/graphql-go"
 	"net/http"
+
+	"github.com/graph-gophers/graphql-go"
 )
 
 type Resolver struct {
@@ -58,7 +59,7 @@ type Order {
   status: String!
 }
 `
-	parsed := graphql.MustParseSchema(schemaString, NewResolver(listUseCase))
+	parsed := graphql.MustParseSchema(schemaString, NewResolver(listUseCase), graphql.UseFieldResolvers())
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		var request struct {

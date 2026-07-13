@@ -2,8 +2,8 @@ package grpcserver
 
 import (
 	"context"
-	"desafio-clean-architecture/internal/usecase"
 	orderspb "desafio-clean-architecture/internal/proto/orderspb"
+	"desafio-clean-architecture/internal/usecase"
 )
 
 type Server struct {

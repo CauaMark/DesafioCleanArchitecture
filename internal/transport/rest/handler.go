@@ -1,9 +1,9 @@
 package rest
 
 import (
-	"encoding/json"
 	"desafio-clean-architecture/internal/domain"
 	"desafio-clean-architecture/internal/usecase"
+	"encoding/json"
 	"net/http"
 )
 
